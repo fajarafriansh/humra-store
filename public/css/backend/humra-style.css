@@ -1,0 +1,35 @@
+form div { position: relative; }
+
+.password button.unmask {
+  position: absolute;
+  right: 74px;
+  top: 12px;
+  text-indent: -9999px;
+  width: 25px;
+  height: 25px;
+  background: #aaa;
+  border-radius: 50%;
+  cursor:pointer;
+  border: none;
+  -webkit-appearance:none;
+}
+.password button.unmask:before {
+  content: "";
+  position:absolute;
+  top:4px; left:4px;
+  width: 17px;
+  height: 17px;
+  background: #e3e3e3;
+  z-index:1;
+  border-radius: 50%;
+}
+.password[type="text"] button.unmask:after {
+  content: "";
+  position:absolute;
+  top:6px; left:6px;
+  width: 13px;
+  height: 13px;
+  background: #aaa;
+  z-index:2;
+  border-radius: 50%;
+}
