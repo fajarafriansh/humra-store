@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use App\User;
+use App\Country;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller {
@@ -58,6 +59,7 @@ class UsersController extends Controller {
     public function account(Request $request) {
         $user_id = Auth::user() -> id;
         $user_details = User::find($user_id);
+        $countries = Country::get();
 
         if ($request -> isMethod('POST')) {
             $data = $request -> all();
@@ -78,7 +80,7 @@ class UsersController extends Controller {
 
             return redirect() -> back() -> with('flash_message_success', 'You account details has been updated.');
         }
-    	return view('users.profile') -> with(compact('user_details'));
+    	return view('users.profile') -> with(compact('user_details', 'countries'));
     }
 
     public function checkPassword(Request $request) {

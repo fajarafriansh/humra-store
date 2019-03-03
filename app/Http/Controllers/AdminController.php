@@ -14,12 +14,16 @@ class AdminController extends Controller {
     		$data = $request -> input();
     		if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin' => '1'])) {
 				// Session::put('adminSession', $data['email']);
-    			return redirect('/admin');
+    			return redirect('/admin/dashboard');
     		} else {
     			return redirect('/admin/login') -> with('flash_message_error', 'Invalid Username or Password');
     		}
     	}
     	return view('admin.admin_login');
+    }
+
+    public function admin() {
+        return redirect('/admin/dashboard');
     }
 
     public function dashboard() {

@@ -8,15 +8,14 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Category;
+use App\Product;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+	use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public static function mainCategories() {
-    	$main_categories = Category::where(['parent_id' => 0]) -> get();
-    	// $main_categories = json_decode(json_encode($main_categories));
-    	// echo "<prev>"; print_r($main_categories); die;
-    	return $main_categories;
-    }
+	public static function mainCategories() {
+		$main_categories = Category::where(['parent_id' => 0]) -> get();
+	return $main_categories;
+	}
 }
